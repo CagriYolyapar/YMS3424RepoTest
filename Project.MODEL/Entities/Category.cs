@@ -13,5 +13,6 @@ namespace Project.MODEL.Entities
 
         //Relational Properties
         public virtual List<Product> Product { get; set; }
+        public virtual List<ProductCategory> ProductCategories { get; set; }
     }
 }
