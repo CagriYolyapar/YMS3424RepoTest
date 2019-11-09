@@ -16,6 +16,8 @@ namespace Project.MAP.Options
             Property(x => x.ProductName).HasColumnName("Ürün İsmi").IsRequired();
 
             Property(x => x.UnitPrice).HasColumnName("Ürün Fiyatı").IsOptional();
+
+            Property(x => x.Description).HasColumnName("Ürün Açıklaması").IsOptional();
         }
     }
 }
