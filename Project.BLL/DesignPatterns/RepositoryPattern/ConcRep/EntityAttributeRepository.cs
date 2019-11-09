@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.DesignPatterns.RepositoryPattern.ConcRep
 {
-    class EntityAttributeRepository : BaseRepository<EntityAttribute>
+    public class EntityAttributeRepository : BaseRepository<EntityAttribute>
     {
     }
 }
