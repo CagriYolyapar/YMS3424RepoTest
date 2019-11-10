@@ -1,5 +1,6 @@
 ﻿using Project.BLL.DesignPatterns.RepositoryPattern.ConcRep;
 using Project.MODEL.Entities;
+using Project.WinUI.LoginForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,56 +37,35 @@ namespace Project.WinUI.ProductForm
 
         private void UpdateProduct_Load(object sender, EventArgs e)
         {
+
+
             categories = categoryRepository.GetActives();
             entityAttributes = entityAttributeRepository.GetActives();
 
-            foreach (Category item in categories)
-            {
-                CheckBox c = new CheckBox();
-                c.Text = item.CategoryName;
-                c.Tag = item.ID;
+            ListBoxLoad();
+        }
 
-                clbCategory.Items.Add(c);
-            }
-            foreach (EntityAttribute item in entityAttributes)
-            {
-                CheckBox c = new CheckBox();
-                c.Text = item.AttributeName;
-                c.Tag = item.ID;
+        private void ListBoxLoad()
+        {
+            lstProducts.DataSource = productRepository.GetActives();
+            lstProducts.SelectedIndex = -1;
+        }
 
-                clbAttribute.Items.Add(c);
-            }
+        List<int> currentProductCategories = new List<int>();
+        List<int> currentProductAttributes = new List<int>();
+        private void LstProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
 
-        private void LstProducts_SelectedIndexChanged(object sender, EventArgs e)
+        void UncheckAllItems(FlowLayoutPanel flp)
         {
-            if (lstProducts.SelectedIndex > -1)
+            for (int i = 0; i < flp.Controls.Count; i++)
             {
-                clbAttribute.Items.Clear();
-                clbCategory.Items.Clear();
-
-                product = lstProducts.SelectedItem as Product;
-                txtProductName.Text = product.ProductName;
-                txtProductDescription.Text = product.Description;
-
-                productCategories = productCategoryRepository.Where(x=>x.ProductID == product.ID);
-
-                foreach (CheckBox c in clbAttribute.Items)
+                if ((flp.Controls[i] as CheckBox).Checked)
                 {
-                    if (productDetails.Contains(productDetailRepository.Find(Convert.ToInt32(c.Tag)))) {
-                        c.Checked = true;
-                    }
-                }
-
-                productDetails = productDetailRepository.Where(x=>x.ProductID == product.ID);
-
-                foreach (CheckBox c in clbCategory.Items)
-                {
-                    if (productCategories.Contains(productCategoryRepository.Find(Convert.ToInt32(c.Tag))))
-                    {
-                        c.Checked = true;
-                    }
+                    (flp.Controls[i] as CheckBox).Checked = false;
                 }
             }
         }
@@ -95,6 +75,19 @@ namespace Project.WinUI.ProductForm
             if (product != null)
             {
                 productRepository.Delete(product);
+                foreach (ProductCategory item in productCategoryRepository.Where(x => x.ProductID == product.ID))
+                {
+                    productCategoryRepository.Delete(item);
+                }
+
+                foreach (ProductDetail item in productDetailRepository.Where(x => x.ProductID == product.ID))
+                {
+                    productDetailRepository.Delete(item);
+                }
+
+                UncheckAllItems(flpAttribute);
+                UncheckAllItems(flpCategory);
+                ListBoxLoad();
             }
             else
             {
@@ -109,39 +102,43 @@ namespace Project.WinUI.ProductForm
                 productRepository.Update(product);
 
                 //Daha önce kayıtlı olan, şu an uncheck olan categorileri, productcategory'den sil.
-                foreach (CheckBox c in clbCategory.Items)
+                foreach (CheckBox c in flpCategory.Controls)
                 {
-                    if (productCategories.Contains(productCategoryRepository.Find(Convert.ToInt32(c.Tag))))
+                    int ID = Convert.ToInt32(c.Tag);
+                    if (productCategories.Contains(productCategoryRepository.FirstOrDefault(x => x.CategoryID == ID && x.ProductID == product.ID)))
                     {
                         if (!c.Checked)
                         {
-                            productCategoryRepository.Delete(productCategoryRepository.Select(x=>x.CategoryID == Convert.ToInt32(c.Tag) && x.ProductID == product.ID) as ProductCategory);
+                            productCategoryRepository.Delete(productCategoryRepository.FirstOrDefault(x => x.CategoryID == ID && x.ProductID == product.ID));
                         }
+
                     }
                 }
 
                 //Daha önce kayıtlı olan, şu an uncheck olan attributeleri, productdetail'den sil.
-                foreach (CheckBox c in clbAttribute.Items)
+                foreach (CheckBox c in flpAttribute.Controls)
                 {
-                    if (productDetails.Contains(productDetailRepository.Find(Convert.ToInt32(c.Tag))))
+                    int ID = Convert.ToInt32(c.Tag);
+                    if (productDetails.Contains(productDetailRepository.FirstOrDefault(x => x.EntityAttributeID == ID && x.ProductID == product.ID)))
                     {
                         if (!c.Checked)
                         {
-                            productDetailRepository.Delete(productDetailRepository.Select(x => x.AttributeID == Convert.ToInt32(c.Tag) && x.ProductID == product.ID) as ProductDetail);
+                            productDetailRepository.Delete(productDetailRepository.FirstOrDefault(x => x.EntityAttributeID == ID && x.ProductID == product.ID));
                         }
                     }
                 }
 
-                
+
                 //Yeni seçilen attributeları, productDetail'e ekle.
-                foreach (CheckBox c in clbAttribute.CheckedItems)
+                foreach (CheckBox c in flpAttribute.Controls)
                 {
-                    if (!productDetails.Contains(productDetailRepository.Find(Convert.ToInt32(c.Tag))))
+                    int ID = Convert.ToInt32(c.Tag);
+                    if (!productDetails.Contains(productDetailRepository.FirstOrDefault(x => x.EntityAttributeID == ID && x.ProductID == product.ID)))
                     {
                         if (c.Checked)
                         {
                             ProductDetail productDetail = new ProductDetail();
-                            productDetail.AttributeID = Convert.ToInt32(c.Tag);
+                            productDetail.EntityAttributeID = Convert.ToInt32(c.Tag);
                             productDetail.ProductID = product.ID;
                             productDetailRepository.Add(productDetail);
                         }
@@ -149,9 +146,10 @@ namespace Project.WinUI.ProductForm
                 }
 
                 //Yeni seçilen kategorileri, productcategory'e ekle.
-                foreach (CheckBox c in clbCategory.CheckedItems)
+                foreach (CheckBox c in flpCategory.Controls)
                 {
-                    if (!productCategories.Contains(productCategoryRepository.Find(Convert.ToInt32(c.Tag))))
+                    int ID = Convert.ToInt32(c.Tag);
+                    if (!productCategories.Contains(productCategoryRepository.FirstOrDefault(x => x.CategoryID == ID && x.ProductID == product.ID)))
                     {
                         if (c.Checked)
                         {
@@ -162,10 +160,75 @@ namespace Project.WinUI.ProductForm
                         }
                     }
                 }
+
+                UncheckAllItems(flpAttribute);
+                UncheckAllItems(flpCategory);
+
+                ListBoxLoad();
             }
             else
             {
                 MessageBox.Show("Ürün Seçiniz!");
+            }
+        }
+
+        private void UpdateProduct_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ChooseForm chooseForm = new ChooseForm();
+            chooseForm.Show();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in flpAttribute.Controls)
+            {
+                (item as CheckBox).Checked = true;
+            }
+        }
+
+        private void LstProducts_Click(object sender, EventArgs e)
+        {
+            if (lstProducts.SelectedIndex > -1)
+            {
+                flpAttribute.Controls.Clear();
+                flpCategory.Controls.Clear();
+
+                product = lstProducts.SelectedItem as Product;
+                txtProductName.Text = product.ProductName;
+                txtProductDescription.Text = product.Description;
+
+                productDetails = productDetailRepository.Where(x => x.ProductID == product.ID && x.Status != MODEL.Enums.DataStatus.Deleted);
+
+                productCategories = productCategoryRepository.Where(x => x.ProductID == product.ID && x.Status != MODEL.Enums.DataStatus.Deleted);
+
+                foreach (Category item in categories)
+                {
+                    ProductCategory pc = productCategoryRepository.FirstOrDefault(x => x.ProductID == product.ID && x.CategoryID == item.ID);
+
+                    CheckBox c = new CheckBox();
+                    c.Text = item.CategoryName;
+                    c.Tag = item.ID;
+                    if (productCategories.Contains(pc))
+                    {
+                        c.Checked = true;
+                    }
+                    flpCategory.Controls.Add(c);
+                }
+
+                foreach (EntityAttribute item in entityAttributes)
+                {
+                    ProductDetail pd = productDetailRepository.FirstOrDefault(x => x.ProductID == product.ID && x.EntityAttributeID == item.ID);
+
+                    CheckBox c = new CheckBox();
+                    c.Text = item.AttributeName;
+                    c.Tag = item.ID;
+                    if (productDetails.Contains(pd))
+                    {
+                        c.Checked = true;
+                    }
+
+                    flpAttribute.Controls.Add(c);
+                }
             }
         }
     }

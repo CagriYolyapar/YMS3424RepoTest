@@ -34,9 +34,9 @@
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.clbAttribute = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.clbCategory = new System.Windows.Forms.CheckedListBox();
+            this.flpCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpAttribute = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -91,39 +91,43 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Kategori";
             // 
-            // clbAttribute
-            // 
-            this.clbAttribute.FormattingEnabled = true;
-            this.clbAttribute.Location = new System.Drawing.Point(12, 290);
-            this.clbAttribute.Name = "clbAttribute";
-            this.clbAttribute.Size = new System.Drawing.Size(260, 94);
-            this.clbAttribute.TabIndex = 12;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 274);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Kategori";
+            this.label4.Text = "Özellik";
             // 
-            // clbCategory
+            // flpCategory
             // 
-            this.clbCategory.FormattingEnabled = true;
-            this.clbCategory.Location = new System.Drawing.Point(12, 177);
-            this.clbCategory.Name = "clbCategory";
-            this.clbCategory.Size = new System.Drawing.Size(260, 94);
-            this.clbCategory.TabIndex = 14;
+            this.flpCategory.AutoScroll = true;
+            this.flpCategory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpCategory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpCategory.Location = new System.Drawing.Point(12, 177);
+            this.flpCategory.Name = "flpCategory";
+            this.flpCategory.Size = new System.Drawing.Size(260, 94);
+            this.flpCategory.TabIndex = 14;
+            // 
+            // flpAttribute
+            // 
+            this.flpAttribute.AutoScroll = true;
+            this.flpAttribute.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpAttribute.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpAttribute.Location = new System.Drawing.Point(12, 290);
+            this.flpAttribute.Name = "flpAttribute";
+            this.flpAttribute.Size = new System.Drawing.Size(260, 94);
+            this.flpAttribute.TabIndex = 15;
             // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 461);
-            this.Controls.Add(this.clbCategory);
+            this.Controls.Add(this.flpAttribute);
+            this.Controls.Add(this.flpCategory);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.clbAttribute);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtProductDescription);
@@ -132,6 +136,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddProduct";
             this.Text = "AddProduct";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddProduct_FormClosing);
             this.Load += new System.EventHandler(this.AddProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -146,8 +151,8 @@
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckedListBox clbAttribute;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckedListBox clbCategory;
+        private System.Windows.Forms.FlowLayoutPanel flpCategory;
+        private System.Windows.Forms.FlowLayoutPanel flpAttribute;
     }
 }

@@ -13,7 +13,8 @@ namespace Project.MAP.Options
         {
             ToTable("Ürün Kategorileri");
 
-            Ignore(x => x.ID).HasKey(x => new
+            Ignore(x => x.ID);
+            HasKey(x => new
             {
                 x.ProductID,
                 x.CategoryID

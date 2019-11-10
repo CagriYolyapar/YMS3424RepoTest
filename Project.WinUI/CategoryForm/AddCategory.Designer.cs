@@ -90,6 +90,8 @@
             this.Controls.Add(this.label1);
             this.Name = "AddCategory";
             this.Text = "AddCategory";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddCategory_FormClosing);
+            this.Load += new System.EventHandler(this.AddCategory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

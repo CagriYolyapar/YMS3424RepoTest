@@ -39,12 +39,11 @@ namespace Project.DAL.Strategy
                     Product pro = new Product();
                     pro.ProductName = FakeData.TextData.GetAlphabetical(10);
                     pro.UnitPrice = Convert.ToDecimal(FakeData.NumberData.GetDouble());
-                    pro.CategoryID = c.ID;
                     context.Products.Add(pro);
                     context.SaveChanges();
 
                     ProductDetail pd = new ProductDetail();
-                    pd.AttributeID = et.ID;
+                    pd.EntityAttributeID = et.ID;
                     pd.ProductID = pro.ID;
                     context.ProductDetails.Add(pd);
                     context.SaveChanges();

@@ -1,5 +1,6 @@
 ﻿using Project.BLL.DesignPatterns.RepositoryPattern.ConcRep;
 using Project.MODEL.Entities;
+using Project.WinUI.LoginForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +41,17 @@ namespace Project.WinUI.CategoryForm
                     ((TextBox)c).Text = String.Empty;
                 }
             }
+        }
+
+        private void AddCategory_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ChooseForm chooseForm = new ChooseForm();
+            chooseForm.Show();
+        }
+
+        private void AddCategory_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.clbCategory = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.clbAttribute = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtProductDescription = new System.Windows.Forms.TextBox();
@@ -40,15 +38,10 @@
             this.lstProducts = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.flpCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpAttribute = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // clbCategory
-            // 
-            this.clbCategory.FormattingEnabled = true;
-            this.clbCategory.Location = new System.Drawing.Point(293, 177);
-            this.clbCategory.Name = "clbCategory";
-            this.clbCategory.Size = new System.Drawing.Size(260, 94);
-            this.clbCategory.TabIndex = 23;
             // 
             // label4
             // 
@@ -58,14 +51,6 @@
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 22;
             this.label4.Text = "Özellikler";
-            // 
-            // clbAttribute
-            // 
-            this.clbAttribute.FormattingEnabled = true;
-            this.clbAttribute.Location = new System.Drawing.Point(293, 290);
-            this.clbAttribute.Name = "clbAttribute";
-            this.clbAttribute.Size = new System.Drawing.Size(260, 94);
-            this.clbAttribute.TabIndex = 21;
             // 
             // label3
             // 
@@ -126,7 +111,7 @@
             this.lstProducts.Name = "lstProducts";
             this.lstProducts.Size = new System.Drawing.Size(272, 420);
             this.lstProducts.TabIndex = 24;
-            this.lstProducts.SelectedIndexChanged += new System.EventHandler(this.LstProducts_SelectedIndexChanged);
+            this.lstProducts.Click += new System.EventHandler(this.LstProducts_Click);
             // 
             // label5
             // 
@@ -147,17 +132,46 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
+            // flpCategory
+            // 
+            this.flpCategory.AutoScroll = true;
+            this.flpCategory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpCategory.Location = new System.Drawing.Point(293, 177);
+            this.flpCategory.Name = "flpCategory";
+            this.flpCategory.Size = new System.Drawing.Size(259, 94);
+            this.flpCategory.TabIndex = 27;
+            // 
+            // flpAttribute
+            // 
+            this.flpAttribute.AutoScroll = true;
+            this.flpAttribute.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpAttribute.Location = new System.Drawing.Point(296, 291);
+            this.flpAttribute.Name = "flpAttribute";
+            this.flpAttribute.Size = new System.Drawing.Size(259, 94);
+            this.flpAttribute.TabIndex = 28;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(575, 344);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // UpdateProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 461);
+            this.ClientSize = new System.Drawing.Size(671, 465);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.flpAttribute);
+            this.Controls.Add(this.flpCategory);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lstProducts);
-            this.Controls.Add(this.clbCategory);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.clbAttribute);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtProductDescription);
@@ -166,6 +180,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UpdateProduct";
             this.Text = "UpdateProduct";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateProduct_FormClosing);
             this.Load += new System.EventHandler(this.UpdateProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -173,10 +188,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckedListBox clbCategory;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckedListBox clbAttribute;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtProductDescription;
@@ -186,5 +198,8 @@
         private System.Windows.Forms.ListBox lstProducts;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.FlowLayoutPanel flpCategory;
+        private System.Windows.Forms.FlowLayoutPanel flpAttribute;
+        private System.Windows.Forms.Button button1;
     }
 }

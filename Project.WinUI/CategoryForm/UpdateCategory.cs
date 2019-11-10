@@ -1,5 +1,6 @@
 ﻿using Project.BLL.DesignPatterns.RepositoryPattern.ConcRep;
 using Project.MODEL.Entities;
+using Project.WinUI.LoginForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,11 @@ namespace Project.WinUI.CategoryForm
 
         private void UpdateCategory_Load(object sender, EventArgs e)
         {
+            ListBoxLoad();
+        }
+
+        void ListBoxLoad()
+        {
             lstCategories.DataSource = categoryRepository.GetActives();
             lstCategories.SelectedIndex = -1;
         }
@@ -44,6 +50,7 @@ namespace Project.WinUI.CategoryForm
             if(category != null)
             {
                 categoryRepository.Delete(category);
+                ListBoxLoad();
             }
             else
             {
@@ -57,11 +64,18 @@ namespace Project.WinUI.CategoryForm
             if (category != null)
             {
                 categoryRepository.Update(category);
+                ListBoxLoad();
             }
             else
             {
                 MessageBox.Show("Kategori Seçiniz!");
             }
+        }
+
+        private void UpdateCategory_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ChooseForm chooseForm = new ChooseForm();
+            chooseForm.Show();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Project.MODEL.Entities
     public class ProductDetail:BaseEntity
     {
         public int ProductID { get; set; }
-        public int AttributeID { get; set; }
+        public int EntityAttributeID { get; set; }
 
         //Relational Properties
         public virtual Product Product { get; set; }

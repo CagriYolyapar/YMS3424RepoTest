@@ -124,6 +124,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UpdateCategory";
             this.Text = "UpdateCategory";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateCategory_FormClosing);
             this.Load += new System.EventHandler(this.UpdateCategory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

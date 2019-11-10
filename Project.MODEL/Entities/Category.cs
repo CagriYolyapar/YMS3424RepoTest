@@ -12,7 +12,13 @@ namespace Project.MODEL.Entities
         public string Description { get; set; }
 
         //Relational Properties
-        public virtual List<Product> Product { get; set; }
+        //Product-category çoka çok ilişkide olduğu için, bu alanı kaldırdım.
+        //public virtual List<Product> Product { get; set; }
         public virtual List<ProductCategory> ProductCategories { get; set; }
+
+        public override string ToString()
+        {
+            return $"{CategoryName}";
+        }
     }
 }

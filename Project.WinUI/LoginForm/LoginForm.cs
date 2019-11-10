@@ -27,9 +27,7 @@ namespace Project.WinUI.LoginForm
                                         && x.Password == txtPassword.Text
                                         && x.Role == MODEL.Enums.UserRole.Admin))
             {
-                ChooseForm adminForm = new ChooseForm(appUserRepository.FirstOrDefault(x => x.UserName == txtUserName.Text
-                                        && x.Password == txtPassword.Text
-                                        && x.Role == MODEL.Enums.UserRole.Admin));
+                ChooseForm adminForm = new ChooseForm();
                 this.Hide();
                 adminForm.Show();
             }

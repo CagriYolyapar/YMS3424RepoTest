@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace Project.MAP.Options
 {
-    public class ProductDetailMap:BaseMap<ProductDetail>
+    public class ProductDetailMap : BaseMap<ProductDetail>
     {
         public ProductDetailMap()
         {
             ToTable("Ürün Detayları");
 
-            Ignore(x => x.ID).HasKey(x => new
+            Ignore(x => x.ID);
+            HasKey(x => new
             {
-                x.AttributeID,
+                x.EntityAttributeID,
                 x.ProductID
 
             });

@@ -16,13 +16,10 @@ namespace Project.WinUI.LoginForm
 {
     public partial class ChooseForm : Form
     {
-        public ChooseForm(AppUser user)
+        public ChooseForm()
         {
             InitializeComponent();
-            currentUser = user;
         }
-
-        AppUser currentUser;
 
         private void BtnAddCategory_Click(object sender, EventArgs e)
         {
