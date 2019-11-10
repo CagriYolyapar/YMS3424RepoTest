@@ -40,32 +40,34 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.flpCategory = new System.Windows.Forms.FlowLayoutPanel();
             this.flpAttribute = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(293, 274);
+            this.label4.Location = new System.Drawing.Point(391, 337);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.Size = new System.Drawing.Size(66, 17);
             this.label4.TabIndex = 22;
             this.label4.Text = "Özellikler";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(293, 161);
+            this.label3.Location = new System.Drawing.Point(391, 198);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.Size = new System.Drawing.Size(61, 17);
             this.label3.TabIndex = 20;
             this.label3.Text = "Kategori";
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(293, 391);
+            this.btnDelete.Location = new System.Drawing.Point(391, 481);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(129, 58);
+            this.btnDelete.Size = new System.Drawing.Size(172, 71);
             this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "Sil";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -73,60 +75,68 @@
             // 
             // txtProductDescription
             // 
-            this.txtProductDescription.Location = new System.Drawing.Point(293, 64);
+            this.txtProductDescription.Location = new System.Drawing.Point(391, 79);
+            this.txtProductDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtProductDescription.Multiline = true;
             this.txtProductDescription.Name = "txtProductDescription";
-            this.txtProductDescription.Size = new System.Drawing.Size(260, 94);
+            this.txtProductDescription.Size = new System.Drawing.Size(345, 115);
             this.txtProductDescription.TabIndex = 18;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(293, 48);
+            this.label2.Location = new System.Drawing.Point(391, 59);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 17;
             this.label2.Text = "Açıklama";
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(293, 25);
+            this.txtProductName.Location = new System.Drawing.Point(391, 31);
+            this.txtProductName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(260, 20);
+            this.txtProductName.Size = new System.Drawing.Size(345, 22);
             this.txtProductName.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(293, 9);
+            this.label1.Location = new System.Drawing.Point(391, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(63, 17);
             this.label1.TabIndex = 15;
             this.label1.Text = "Ürün Adı";
             // 
             // lstProducts
             // 
             this.lstProducts.FormattingEnabled = true;
-            this.lstProducts.Location = new System.Drawing.Point(15, 25);
+            this.lstProducts.ItemHeight = 16;
+            this.lstProducts.Location = new System.Drawing.Point(20, 31);
+            this.lstProducts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstProducts.Name = "lstProducts";
-            this.lstProducts.Size = new System.Drawing.Size(272, 420);
+            this.lstProducts.Size = new System.Drawing.Size(361, 516);
             this.lstProducts.TabIndex = 24;
             this.lstProducts.Click += new System.EventHandler(this.LstProducts_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 9);
+            this.label5.Location = new System.Drawing.Point(16, 11);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.Size = new System.Drawing.Size(55, 17);
             this.label5.TabIndex = 25;
             this.label5.Text = "Ürünler";
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(424, 391);
+            this.btnUpdate.Location = new System.Drawing.Point(565, 481);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(129, 58);
+            this.btnUpdate.Size = new System.Drawing.Size(172, 71);
             this.btnUpdate.TabIndex = 26;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -136,36 +146,27 @@
             // 
             this.flpCategory.AutoScroll = true;
             this.flpCategory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpCategory.Location = new System.Drawing.Point(293, 177);
+            this.flpCategory.Location = new System.Drawing.Point(391, 218);
+            this.flpCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flpCategory.Name = "flpCategory";
-            this.flpCategory.Size = new System.Drawing.Size(259, 94);
+            this.flpCategory.Size = new System.Drawing.Size(345, 115);
             this.flpCategory.TabIndex = 27;
             // 
             // flpAttribute
             // 
             this.flpAttribute.AutoScroll = true;
             this.flpAttribute.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpAttribute.Location = new System.Drawing.Point(296, 291);
+            this.flpAttribute.Location = new System.Drawing.Point(395, 358);
+            this.flpAttribute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flpAttribute.Name = "flpAttribute";
-            this.flpAttribute.Size = new System.Drawing.Size(259, 94);
+            this.flpAttribute.Size = new System.Drawing.Size(345, 115);
             this.flpAttribute.TabIndex = 28;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(575, 344);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // UpdateProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(671, 465);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(762, 553);
             this.Controls.Add(this.flpAttribute);
             this.Controls.Add(this.flpCategory);
             this.Controls.Add(this.btnUpdate);
@@ -178,6 +179,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UpdateProduct";
             this.Text = "UpdateProduct";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateProduct_FormClosing);
@@ -200,6 +202,5 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.FlowLayoutPanel flpCategory;
         private System.Windows.Forms.FlowLayoutPanel flpAttribute;
-        private System.Windows.Forms.Button button1;
     }
 }
